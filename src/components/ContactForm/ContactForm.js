@@ -8,7 +8,8 @@ import {
   ErrorMsg,
 } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, getContacts } from 'components/redux/contactsSlice';
+import { getContacts } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 
 const nameRegex = /[a-zA-Zа-яА-Я]+(([' ][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 
