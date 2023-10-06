@@ -13,8 +13,13 @@ export const ContactItemList = styled.li`
 export const BtnDelete = styled.button`
   width: 100px;
   font-size: 18px;
+  margin-left: 20px;
   &:hover,
   :focus {
     background-color: #00bfff;
   }
+`;
+
+export const Phone = styled.p`
+  margin-left: auto;
 `;

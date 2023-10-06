@@ -8,7 +8,7 @@ import {
   ErrorMsg,
 } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/contactsSlice';
+import { selectContacts } from 'redux/selectors';
 import { addContact } from 'redux/operations';
 
 const nameRegex = /[a-zA-Zа-яА-Я]+(([' ][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
@@ -30,7 +30,7 @@ const formSchema = Yup.object().shape({
 });
 
 export const ContactForm = () => {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   return (

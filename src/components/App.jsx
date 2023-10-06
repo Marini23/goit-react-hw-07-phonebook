@@ -3,15 +3,19 @@ import { GlobalStyle } from './ClobalStyle';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactsList/ContactsList';
 import { Filter } from './Filter/Filter';
-import { getContacts, getError, getIsLoading } from 'redux/contactsSlice';
+import {
+  selectError,
+  selectIsLoading,
+  selectVisibleContacts,
+} from 'redux/selectors';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const contacts = useSelector(selectVisibleContacts);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -23,9 +27,9 @@ export const App = () => {
       <ContactForm />
       <h2>Contacts</h2>
       <Filter />
-      {contacts.length > 0 && <ContactList />}
       {isLoading && !error && <p>Loading tasks...</p>}
       {error && <p>{error}</p>}
+      {contacts.length > 0 && <ContactList />}
       <GlobalStyle />
     </div>
   );
