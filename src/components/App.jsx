@@ -10,6 +10,7 @@ import {
 } from 'redux/selectors';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
+import { Loader } from './Loader';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -27,9 +28,9 @@ export const App = () => {
       <ContactForm />
       <h2>Contacts</h2>
       <Filter />
-      {isLoading && !error && <p>Loading tasks...</p>}
+      {isLoading && !error && <Loader />}
       {error && <p>{error}</p>}
-      {contacts.length > 0 && <ContactList />}
+      {contacts.length > 0 && !isLoading && !error && <ContactList />}
       <GlobalStyle />
     </div>
   );
